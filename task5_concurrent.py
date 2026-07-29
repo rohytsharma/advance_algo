@@ -120,9 +120,9 @@ def threaded(sources, num_threads):
     return total[0]
 
 
-# --------------------------------------------------------------------------- #
+
 #  Experiment                                                                  #
-# --------------------------------------------------------------------------- #
+
 def run(n_nodes=4000, n_sources=240, proc_counts=(1, 2, 4, 8), repeats=2):
     global G
     G = random_sparse_graph(n_nodes, avg_degree=6, directed=True)

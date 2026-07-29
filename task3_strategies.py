@@ -87,17 +87,7 @@ def brute_force_jobs(jobs):
 # --------------------------------------------------------------------------- #
 #  Given arrival[] and departure[] times of trains, find the minimum number    #
 #  of platforms so that no train waits.                                        #
-#                                                                              #
-#  Greedy choice : sort arrivals and departures separately; sweep in time      #
-#  order. On an arrival we need a platform (+1); on a departure one frees       #
-#  (-1). The running maximum of concurrent trains is the answer.               #
-#                                                                              #
-#  Optimality (proof sketch): the minimum number of platforms equals the       #
-#  maximum number of trains present at the station simultaneously (a clique    #
-#  in the interval-overlap graph). No schedule can use fewer platforms than    #
-#  the peak overlap, and the sweep realises exactly that peak, so it is        #
-#  optimal. Complexity: O(n log n) for the two sorts, O(n) sweep.              #
-# =========================================================================== #
+
 def min_platforms(arrivals, departures):
     arr = sorted(arrivals)
     dep = sorted(departures)
@@ -129,14 +119,7 @@ def brute_force_platforms(arrivals, departures):
 # --------------------------------------------------------------------------- #
 #  Find a sequence of knight moves visiting every square of an n x n board      #
 #  exactly once.                                                                #
-#                                                                              #
-#  Worst case is exponential: naive backtracking explores up to 8^(n^2) move   #
-#  sequences. Pruning = WARNSDORFF'S RULE: always move to the reachable        #
-#  unvisited square that itself has the FEWEST onward moves. This heuristic     #
-#  orders the branches so the search almost always descends straight to a       #
-#  full tour without backtracking, turning an intractable search into a         #
-#  near-linear one in practice.                                                #
-# =========================================================================== #
+
 KNIGHT_MOVES = [(2, 1), (1, 2), (-1, 2), (-2, 1),
                 (-2, -1), (-1, -2), (1, -2), (2, -1)]
 
@@ -180,9 +163,9 @@ def knights_tour(n, start=(0, 0), use_warnsdorff=True):
     return ok, board, stats
 
 
-# =========================================================================== #
 #  Demonstration / self-tests                                                  #
-# =========================================================================== #
+
+
 def demo_dp():
     print("=" * 70)
     print("(a) DYNAMIC PROGRAMMING - Weighted Job Scheduling")
